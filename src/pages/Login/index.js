@@ -30,7 +30,7 @@ export default function Login() {
                 placeholderTextColor="#999"
                 secureTextEntry={true}/>
 
-                <TouchableOpacity style={styles.buttonEntrar}>
+                <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.buttonEntrar}>
                     <Text style={styles.textButtonEntrar}>Entrar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate('Register')} style={styles.buttonRegister}>
