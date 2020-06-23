@@ -22,8 +22,8 @@ export default function Routes() {
                 <AppStack.Screen name="Login" component={Login} />
                 <AppStack.Screen name="Register" component={Register} />
                 <AppStack.Screen name="Home" component={Home} />
-                <AppStack.Screen name="New Group" component={NewGroup} />
-                <AppStack.Screen name="New Wish" component={NewWish} />
+                <AppStack.Screen name="NewGroup" component={NewGroup} />
+                <AppStack.Screen name="NewWish" component={NewWish} />
                 <AppStack.Screen name="Groups" component={Groups} />
                 <AppStack.Screen name="Profile" component={Profile} />
                 <AppStack.Screen name="WishList" component={WishList} />
