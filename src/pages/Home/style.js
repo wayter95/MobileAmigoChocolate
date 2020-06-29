@@ -29,7 +29,6 @@ export default StyleSheet.create({
         paddingTop:10,
         justifyContent:'center',
         alignItems:'center'
-
     },
     textListHeader:{
         fontSize:20,

@@ -1,11 +1,13 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
+
 import Constants from 'expo-constants';
 
 export default StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
+        paddingHorizontal: 20,
         paddingTop: Constants.statusBarHeight + 20,
-        alignSelf: 'stretch',
+        backgroundColor: '#FFFFFF'
     },
     header:{
         flexDirection:'row',
@@ -52,4 +54,9 @@ export default StyleSheet.create({
         color:'#FFFFFF',
         fontSize:30,
     },
-}) 
+    date:{
+        marginLeft:20,
+        width:200,
+        borderRadius:5,
+    },
+})

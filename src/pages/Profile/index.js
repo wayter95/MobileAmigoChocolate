@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native'
 import { Feather } from '@expo/vector-icons'
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text,FlatList } from 'react-native';
 
 import styles from './style';
 
@@ -25,7 +25,7 @@ export default function Profile() {
 
 
             <View style={styles.rodape}>
-                <TouchableOpacity style={styles.editPerfil}>
+                <TouchableOpacity style={styles.editPerfil} onPress={() => navigation.navigate('EditProfile')}>
                     <Text style={styles.textEP}>Editar Perfil</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.wishList} onPress={()=> navigation.navigate('WishList')}>

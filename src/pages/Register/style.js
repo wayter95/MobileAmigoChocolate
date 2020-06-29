@@ -62,11 +62,4 @@ export default StyleSheet.create({
         width:200,
         borderRadius:5,
     },
-    groupList:{
-        paddingHorizontal:30
-    },
-    groupTitle:{
-        fontSize:20,
-    }
-
 });
