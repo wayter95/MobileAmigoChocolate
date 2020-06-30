@@ -20,11 +20,10 @@ export default function Login() {
             const response = await api.post('/login', data);
 
             const {id,token} = response.data;
-            await AsyncStorage.multiSet([
-                ['@AmigoChocolate:userId',id],
-                ['@AmigoChocolate:token',token],
-            ])
-
+            await AsyncStorage.setItem('@AmigoChocolate:userId',id);
+            await AsyncStorage.setItem('@AmigoChocolate:token',token);
+          
+            
             navigation.navigate('Home')
 
         } catch (err) {

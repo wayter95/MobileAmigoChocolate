@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native'
-import { View, Image, TouchableOpacity, FlatList, Text } from 'react-native';
+import { View, Image, TouchableOpacity, FlatList, Text, AsyncStorage } from 'react-native';
 import { Feather } from '@expo/vector-icons'
 import styles from './style';
+
+import api from '../../services/api'
 
 import Logo from '../../assets/logo.png';
 
 export default function Home() {
     const navigation = useNavigation();
+    const [groups, setGroups] = useState([]);
+    const [userId,setUserId] = useState();
+    async function getUser() {
+        const userId = await AsyncStorage.getItem('@AmigoChocolate:userId');
 
+        setUserId(userId);
+    }
+    async function loadGroups() {
+        const response = await api.get('/groups', {
+            headers: {
+                id: userId
+            }
+        })
+        setGroups(response.data);
+    }
+    useEffect(() => {
+        getUser();
+        loadGroups();
+    }, [userId])
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -30,21 +50,21 @@ export default function Home() {
                         <Text style={styles.textAddGroup}>Criar Grupo</Text>
                     </TouchableOpacity>
                 </View>
-                <FlatList 
-                style={styles.groupList}
-                showsVerticalScrollIndicator={false}
-                data={[1,2,3,4,5,6,7]}
-                keyExtractor={group => String(group)}
-                renderItem={() => (
-                    <View>
-                        <TouchableOpacity style={styles.groupBtn}>
-                        <Text style={styles.groupTitle}>Amigos de Tapira</Text>
-                        <Text style={styles.dateDraw}>Sorteio em 23/12/2020</Text>
-                        <Text style={styles.groupMenbers}> <Feather name="user" size={16} /> 10/20 </Text>
-                        </TouchableOpacity>
-                    </View>
-                )}/>
-                
+                <FlatList
+                    style={styles.groupList}
+                    showsVerticalScrollIndicator={false}
+                    data={groups}
+                    keyExtractor={group => group._id}
+                    renderItem={({ item }) => (
+                        <View>
+                            <TouchableOpacity style={styles.groupBtn}>
+                                <Text style={styles.groupTitle}>{item.name}</Text>
+                                <Text style={styles.dateDraw}>{item.drawDate}</Text>
+                                <Text style={styles.groupMenbers}> <Feather name="user" size={16} /> {item.membersCount}/20 </Text>
+                            </TouchableOpacity>
+                        </View>
+                    )} />
+
             </View>
         </View>
     );

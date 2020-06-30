@@ -22,8 +22,6 @@ export default function Register() {
             navigation.navigate('Login')
             alert(`Olá ${response.data.name} sua conta foi criada com sucesso, faça login para utilizar nosso app`)
 
-            console.log(response.data.birthday);
-
         } catch (err) {
             alert('Erro no cadastro tente novamente')
         }
